@@ -28,7 +28,7 @@ namespace Chilano.Iso2God
             {
                if (iso.Exists("default.xex"))
                 {
-                    return readXex(); //NO, WANT ID INSTEAD OF STRING
+                    return readXex();
                 }
                throw new Exception("Could not locate default.xex.");
             }
