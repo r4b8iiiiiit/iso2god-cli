@@ -15,6 +15,7 @@ namespace Chilano.Iso2God
             Console.WriteLine("Ported to CLI by Elie CHARRA <elie [dot] charra [at] gmail.com>");
             Console.WriteLine("Usage : iso2god <source iso> <destination folder>");
             Console.WriteLine("");
+            //Get360TitleName.getFromDB();
 
             String[] arguments = Environment.GetCommandLineArgs();
 
@@ -29,9 +30,10 @@ namespace Chilano.Iso2God
                 IsoDetailsResults isoDetailsResults = iso.IsoDetails_DoWork();
                 IsoEntryID isoEntryID = new IsoEntryID(isoDetailsResults.TitleID, isoDetailsResults.MediaID, Convert.ToByte(isoDetailsResults.DiscNumber[0]), Convert.ToByte(isoDetailsResults.DiscCount[0]), Convert.ToByte(isoDetailsResults.Platform[0]), Convert.ToByte(isoDetailsResults.ExType[0]));
                 IsoEntry isoEntry = new IsoEntry(IsoEntryPlatform.Xbox360, isoPath, destinationPath, new FileInfo(isoPath).Length, isoDetailsResults.Name, isoEntryID);
+                Get360TitleName.getTitleID(isoEntry.ID.TitleID);
 
                 Console.WriteLine("-----------------------------------------------------------");
-                Console.WriteLine("> Title    : " + isoEntry.TitleName);
+                Console.WriteLine("> Title    : " + Get360TitleName.getFromDB(isoEntry.ID.TitleID));
                 Console.WriteLine("> Title ID : " + isoEntry.ID.TitleID);
                 Console.WriteLine("> Disc     : " + Char.ConvertFromUtf32(isoEntry.ID.DiscNumber) + " / " + Char.ConvertFromUtf32(isoEntry.ID.DiscCount));
                 Console.WriteLine("> Media ID : " + isoEntry.ID.MediaID);
@@ -41,7 +43,7 @@ namespace Chilano.Iso2God
 
                 Console.WriteLine("+ Launching GOD conversion ...");
                 Iso2God iso2god = new Iso2God();
-                iso2god.Run(isoEntry);
+                iso2god.Run(isoEntry, isoEntry.ID.TitleID.ToString());
             }
 
         }
