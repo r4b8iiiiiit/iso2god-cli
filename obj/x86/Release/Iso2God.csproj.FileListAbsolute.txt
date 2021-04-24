@@ -1,0 +1,11 @@
+C:\Users\Matt\source\repos\iso2god-cli(forked)\iso2god-cli\bin\Release\Iso2God.exe.config
+C:\Users\Matt\source\repos\iso2god-cli(forked)\iso2god-cli\bin\Release\Iso2God.exe
+C:\Users\Matt\source\repos\iso2god-cli(forked)\iso2god-cli\bin\Release\Iso2God.pdb
+C:\Users\Matt\source\repos\iso2god-cli(forked)\iso2god-cli\bin\Release\System.Data.SQLite.dll
+C:\Users\Matt\source\repos\iso2god-cli(forked)\iso2god-cli\bin\Release\System.Data.SQLite.xml
+C:\Users\Matt\source\repos\iso2god-cli(forked)\iso2god-cli\obj\x86\Release\Iso2God.csprojAssemblyReference.cache
+C:\Users\Matt\source\repos\iso2god-cli(forked)\iso2god-cli\obj\x86\Release\Iso2God.csproj.CoreCompileInputs.cache
+C:\Users\Matt\source\repos\iso2god-cli(forked)\iso2god-cli\obj\x86\Release\Iso2God.csproj.CopyComplete
+C:\Users\Matt\source\repos\iso2god-cli(forked)\iso2god-cli\obj\x86\Release\Iso2God.exe
+C:\Users\Matt\source\repos\iso2god-cli(forked)\iso2god-cli\obj\x86\Release\Iso2God.pdb
+C:\Users\Matt\source\repos\iso2god-cli(forked)\iso2god-cli\bin\Release\IDs.db
