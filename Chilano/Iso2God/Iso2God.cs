@@ -279,7 +279,7 @@
             return str;
         }
 
-        private void Iso2God_Partial(bool Crop, IsoEntry iso)
+        private void Iso2God_Partial(bool Crop, IsoEntry iso, string ID)
         {
             FileStream stream;
             GDF gdf;
@@ -314,7 +314,14 @@
             uint blocksReq = (uint) Math.Ceiling(num / ((double) blockSize));
             uint partsReq = (uint) Math.Ceiling(blocksReq / ((double) blockPerPart));
             ContentType type = (iso.Platform == IsoEntryPlatform.Xbox360) ? ContentType.GamesOnDemand : ContentType.XboxOriginal;
-            object[] objArray = { iso.Destination, iso.ID.TitleID, Path.DirectorySeparatorChar, "0000", ((uint) type).ToString("X02"), Path.DirectorySeparatorChar };
+            string gameTitle = Get360TitleName.getFromDB(ID).ToString();
+            var invalidChars = new string[] { ":" };
+            foreach (var i in invalidChars)
+            {
+                gameTitle = gameTitle.Replace(i, " ");
+            }
+            Console.WriteLine(gameTitle);
+            object[] objArray = { iso.Destination, gameTitle, Path.DirectorySeparatorChar, "0000", ((uint) type).ToString("X02"), Path.DirectorySeparatorChar };
             string path = string.Concat(objArray) + ((uniqueName != null) ? uniqueName : iso.ID.TitleID) + ".data";
             if (Directory.Exists(path))
             {
@@ -345,10 +352,10 @@
         }
 
 
-        public void Run(IsoEntry entry)
+        public void Run(IsoEntry entry, string ID)
         {
             uniqueName = createUniqueName(entry);
-            Iso2God_Partial(false, entry);
+            Iso2God_Partial(false, entry, ID);
         }
 
         private void remapDirs(GDF src, GDFDirTable table)
