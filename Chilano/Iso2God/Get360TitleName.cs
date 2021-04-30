@@ -12,7 +12,7 @@ namespace Chilano.Iso2God
             string table = @"URI=file:IDs.db";
             using var con = new SQLiteConnection(table);
             con.Open();
-            var selectStatement = "Select Title FROM Tiltle_List WHERE TitleID = " + ID;
+            var selectStatement = "Select Title FROM Tiltle_List WHERE TitleID = " + '"' + ID.ToLower() + '"';
             using var cmd = new SQLiteCommand(selectStatement, con);
             using SQLiteDataReader reader = cmd.ExecuteReader();
             string gameTitle = "";
