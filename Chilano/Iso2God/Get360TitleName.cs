@@ -16,12 +16,10 @@ namespace Chilano.Iso2God
             using var cmd = new SQLiteCommand(selectStatement, con);
             using SQLiteDataReader reader = cmd.ExecuteReader();
             string gameTitle = "";
-            List<string> gTitle = new List<string>();
             while (reader.Read())
             {
                 gameTitle = reader.GetString(0);
             }
-            //con.Close();
             return gameTitle;
         }
         public static string getTitleID(string ID)
